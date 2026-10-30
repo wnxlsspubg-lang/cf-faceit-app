@@ -1,0 +1,19 @@
+workflows:
+  ios-unsigned:
+    name: CF FACEIT iOS
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+    environment:
+      xcode: latest
+    scripts:
+      - name: Build unsigned IPA
+        script: |
+          brew install xcodegen
+          cd ios
+          xcodegen generate
+          xcodebuild -project CFFaceit.xcodeproj -target CFFaceit -configuration Release -sdk iphoneos SYMROOT="$PWD/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+          mkdir -p Payload
+          cp -R "build/Release-iphoneos/CF FACEIT.app" Payload/
+          zip -qry CF-FACEIT-unsigned.ipa Payload
+    artifacts:
+      - ios/CF-FACEIT-unsigned.ipa
