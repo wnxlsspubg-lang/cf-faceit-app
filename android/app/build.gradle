@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Адрес сайта: приложение открывает его, поэтому все данные (аккаунт, матчи, сообщения) те же, что на сайте.
+def siteUrl = project.findProperty('siteUrl') ?: 'https://cf-faceit-wcfgrade.msk1.amvera.tech'
+
+android {
+    namespace 'ru.cffaceit.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'ru.cffaceit.app'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+        buildConfigField 'String', 'SITE_URL', "\"${siteUrl}\""
+    }
+
+    buildFeatures { buildConfig true }
+
+    // Подпись релиза: задай в gradle.properties или переменных окружения
+    // CF_KEYSTORE, CF_KEYSTORE_PASSWORD, CF_KEY_ALIAS, CF_KEY_PASSWORD (см. КАК_СОБРАТЬ.md).
+    signingConfigs {
+        release {
+            def ks = System.getenv('CF_KEYSTORE') ?: project.findProperty('CF_KEYSTORE')
+            if (ks) {
+                storeFile file(ks)
+                storePassword System.getenv('CF_KEYSTORE_PASSWORD') ?: project.findProperty('CF_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('CF_KEY_ALIAS') ?: project.findProperty('CF_KEY_ALIAS')
+                keyPassword System.getenv('CF_KEY_PASSWORD') ?: project.findProperty('CF_KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            def ks = System.getenv('CF_KEYSTORE') ?: project.findProperty('CF_KEYSTORE')
+            if (ks) signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

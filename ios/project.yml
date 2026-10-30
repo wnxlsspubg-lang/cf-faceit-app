@@ -1,0 +1,21 @@
+name: CFFaceit
+options:
+  bundleIdPrefix: ru.cffaceit
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  CFFaceit:
+    type: application
+    platform: iOS
+    sources: [CFFaceit]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ru.cffaceit.app
+        PRODUCT_NAME: CF FACEIT
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: CFFaceit/Info.plist
+        SWIFT_VERSION: "5.0"
