@@ -19,7 +19,7 @@ final class WebController: UIViewController, WKNavigationDelegate, WKUIDelegate 
     private var web: WKWebView!
     private let bg = UIColor(red: 10/255, green: 5/255, blue: 7/255, alpha: 1)
     private lazy var site: URL = URL(string: (Bundle.main.object(forInfoDictionaryKey: "CFSiteURL") as? String)
-                                     ?? "https://cf-faceit-wcfgrade.msk1.amvera.tech")!
+                                     ?? "https://168-113-178-52.sslip.io")!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
