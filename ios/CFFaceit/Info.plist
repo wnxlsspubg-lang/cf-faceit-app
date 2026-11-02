@@ -10,7 +10,7 @@
   <key>CFBundleShortVersionString</key><string>$(MARKETING_VERSION)</string>
   <key>CFBundleVersion</key><string>$(CURRENT_PROJECT_VERSION)</string>
   <key>LSRequiresIPhoneOS</key><true/>
-  <key>CFSiteURL</key><string>https://cf-faceit-wcfgrade.msk1.amvera.tech</string>
+  <key>CFSiteURL</key><string>https://168-113-178-52.sslip.io</string>
   <key>NSPhotoLibraryUsageDescription</key><string>Чтобы прикрепить скриншот счёта матча.</string>
   <key>NSCameraUsageDescription</key><string>Чтобы сфотографировать счёт матча.</string>
   <key>UILaunchScreen</key><dict><key>UIColorName</key><string>LaunchBg</string></dict>
@@ -19,3 +19,4 @@
   <key>UISupportedInterfaceOrientations</key><array><string>UIInterfaceOrientationPortrait</string></array>
   <key>UISupportedInterfaceOrientations~ipad</key><array><string>UIInterfaceOrientationPortrait</string><string>UIInterfaceOrientationLandscapeLeft</string><string>UIInterfaceOrientationLandscapeRight</string></array>
 </dict></plist>
+
